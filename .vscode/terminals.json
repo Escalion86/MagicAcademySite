@@ -1,0 +1,10 @@
+{
+  "autorun": false,
+  "terminals": [
+    {
+      "name": "Start",
+      "focus": true,
+      "command": "npm start"
+    }
+  ]
+}
