@@ -84,3 +84,18 @@ body {
     /* до: left: 100%-50px */
   }
 }
+
+@keyframes eyes {
+  /* назовём анимацию: "go-left-right" */
+  from {
+    left: 124px;
+    /* от: left: 0px */
+  }
+  80% {
+    left: 119px;
+  }
+  to {
+    left: 124px;
+    /* до: left: 100%-50px */
+  }
+}
