@@ -1,5 +1,6 @@
 // import logo from './logo.svg';
 import React, { useState, useEffect } from "react";
+import { Link, Element } from "react-scroll";
 
 import "./MainPage.css";
 import whatsappIcon from "../img/whatsapp.png";
@@ -24,7 +25,7 @@ import gudini from "../img/gudini.png";
 import akopan from "../img/akopan.jpg";
 
 const menuItems = [
-  { name: "Об академии", href: "#about" },
+  { name: "Об академии", href: "about" },
   { name: "Наша команда", href: "" },
   { name: "Абонементы", href: "" },
   { name: "Отзывы", href: "" },
@@ -67,7 +68,7 @@ const Button = ({
   addClass = "",
 }) => {
   const buttonStyle = inverse
-    ? "bg-white border-primary hover:bg-primary transform hover:text-white text-primary"
+    ? "bg-white border-primary hover:bg-primary transform hover:text-white text-primary hover:border-white"
     : "hover:bg-white hover:border-primary bg-primary transform text-white hover:text-primary";
   return (
     <a href={href} target={newPage ? "_blank" : ""} rel="noreferrer">
@@ -75,7 +76,7 @@ const Button = ({
         className={
           (bigText ? "text-2xl " : "") +
           "mx-1 duration-500 ease-in-out border transform hover:scale-105 font-bold rounded-3xl " +
-          (big ? "py-6 px-8 " : "py-2 px-4 ") +
+          (big ? "py-6 px-10 " : "py-2 px-6 ") +
           buttonStyle +
           (addClass ? " " + addClass : "")
         }
@@ -96,9 +97,20 @@ const Burger = ({ menuOpen, onClick }) => {
 
 const MenuItem = ({ text = "", href = "" }) => {
   return (
-    <a className="p-4 font-bold text-white hover:text-active" href={href}>
+    <Link
+      activeClass="active"
+      className="p-4 font-bold text-white hover:text-active cursor-pointer"
+      to={href}
+      spy={true}
+      smooth={true}
+      duration={500}
+      offset={-114}
+    >
       {text}
-    </a>
+    </Link>
+    // <a className="p-4 font-bold text-white hover:text-active" href={href}>
+    //   {text}
+    // </a>
   );
 };
 
@@ -110,28 +122,45 @@ const MenuSeperator = ({ text = "", href = "" }) => {
   );
 };
 
-const HeadPanel = ({ menuOpen, onClick }) => {
+const HeadPanel = ({
+  menuOpen = false,
+  onClick = () => {},
+  closeMenu = () => {},
+}) => {
   const { width } = useWindowDimensions();
   const deviceSize = width < 1024 ? (width < 640 ? 1 : 2) : 3;
 
   const MenuItemsPC = menuItems.map(({ name, href }, index) => {
     if (index === menuItems.length - 1) {
-      return <MenuItem text={name} href={href} />;
+      return <MenuItem key={"menuItem" + index} text={name} href={href} />;
     } else {
       return (
         <>
-          <MenuItem text={name} href={href} />
-          <MenuSeperator />
+          <MenuItem key={"menuItem" + index} text={name} href={href} />
+          <MenuSeperator key={"separator" + index} />
         </>
       );
     }
   });
 
-  const MenuItemsMobile = menuItems.map(({ name, href }) => {
+  const MenuItemsMobile = menuItems.map(({ name = "", href = "" }, index) => {
     return (
-      <a class="z-1 font-bold text-primary hover:text-active" href={href}>
+      <Link
+        activeClass="active"
+        className="z-1 font-bold text-primary hover:text-active cursor-pointer"
+        to={href}
+        spy={true}
+        smooth={true}
+        duration={500}
+        offset={-114}
+        onClick={closeMenu}
+        key={"menuItemMobile" + index}
+      >
         {name}
-      </a>
+      </Link>
+      // <a className="z-1 font-bold text-primary hover:text-active" href={href}>
+      //   {name}
+      // </a>
     );
   });
 
@@ -184,18 +213,18 @@ const HeadPanel = ({ menuOpen, onClick }) => {
                 </div>
               </div>
               <div
-                class={
+                className={
                   "absolute z-1 flex flex-col items-center justify-center overlay" +
                   (menuOpen ? " open" : "")
                 }
               >
-                <div class="overlay-content">{MenuItemsMobile}</div>
+                <div className="overlay-content">{MenuItemsMobile}</div>
               </div>
             </div>
           </div>
         ) : (
           // Если запущено с ПК
-          <div>
+          <>
             <div className="w-full h-16 px-8 flex flex-row items-center">
               {/* Телефон и чаты */}
               <div className="flex-1 flex flex-row items-center">
@@ -240,14 +269,14 @@ const HeadPanel = ({ menuOpen, onClick }) => {
               </a>
               {/* Кнопки */}
               <div className="flex-1 flex flex-row items-center justify-end">
-                <Button text="Записаться" inverse />
-                <Button text="Войти в личный кабинет" inverse />
+                <Button text="Записаться" href="/" inverse />
+                <Button text="Войти в личный кабинет" href="/login" inverse />
               </div>
             </div>
             <div className="w-screen bg-primary h-12 px-8 flex flex-row items-center justify-center">
               {MenuItemsPC}
             </div>
-          </div>
+          </>
         )}
       </div>
     </div>
@@ -284,17 +313,42 @@ const Illusionist = ({ src = null, alt = "", href = "" }) => {
   );
 };
 
+// const Anchor = ({ name = "" }) => {
+//   return (
+//     <a
+//       name={name}
+//       style={{
+//         display: "block",
+//         position: "relative",
+//         top: -112,
+//         visibility: "hidden",
+//       }}
+//     />
+//   );
+// };
+
 const Main = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   return (
     <div className="h-screen w-screen">
-      <HeadPanel menuOpen={menuOpen} onClick={() => toggleMenu()} />
+      <HeadPanel
+        menuOpen={menuOpen}
+        onClick={() => toggleMenu()}
+        closeMenu={() => closeMenu()}
+      />
 
       {/* Титульный блок */}
+      <Element name="about" />
+      {/* <p>
+        <Anchor name="about" />
+      </p> */}
       <div className="w-full">
         <div
           className="w-full relative z-10"
@@ -306,11 +360,11 @@ const Main = () => {
             backgroundImage: `url(${background})`,
           }}
         >
-          <div style={{ position: "absolute", top: 25, left: 50 }}>
+          <div style={{ position: "absolute", top: 200, left: 50 }}>
             <a href="https://magicacademykrsk.ru/#merlin">
               <img
                 className="object-fill mx-1"
-                style={{ height: 200 }}
+                style={{ height: 350 }}
                 src={merlin}
                 alt="merlin"
               />
@@ -319,28 +373,39 @@ const Main = () => {
           <div className="w-full" align="center">
             <img
               className="object-fill mx-1 pt-5"
-              style={{ height: 200 }}
+              style={{ height: 160 }}
               src={logoWhite}
               alt="magicacademy"
             />
             <h1
-              className="text-6xl text-white w-140 mt-10 text-center font-bold"
+              className="text-6xl text-white w-140 mt-6 text-center font-bold"
               style={{ textShadow: "-5px -3px 2px rgba(76, 29, 149, 1)" }}
             >
               Школа фокусов и сценического искусства
             </h1>
-            <h2 className="text-2xl w-100 mt-10 text-primary text-center">
+            <h2 className="text-2xl w-120 mt-6 text-primary text-center">
               Уникальный кружок в <b>Красноярске</b>
             </h2>
             <p className="text-3xl w-100 mt-6 text-primary text-center font-bold">
               НАБОР ДЕТЕЙ
             </p>
-            <p className="text-3xl w-100 text-primary text-center font-bold">
+            <p className="text-3xl w-100 m-0 text-primary text-center font-bold">
               возрастом от 5 до 14 лет
             </p>
+            <Button
+              text="Записаться на БЕСПЛАТНЫЙ урок"
+              bigText
+              addClass="mt-6"
+              inverse
+            />
             <img
               className="object-fill mx-1 pt-5"
-              style={{ height: 480, position: "absolute", top: 260, right: 0 }}
+              style={{
+                height: 480,
+                position: "absolute",
+                top: 220,
+                left: "70%",
+              }}
               src={aik}
               alt="aik"
             />
@@ -379,6 +444,9 @@ const Main = () => {
           />
         </div>
       </div>
+
+      {/* --------------------------------------------------------------- */}
+
       <div
         className="w-full bg-primary flex items-center justify-center"
         style={{ height: 500 }}
@@ -393,6 +461,9 @@ const Main = () => {
           allowFullScreen
         />
       </div>
+
+      {/* --------------------------------------------------------------- */}
+
       <div
         className="w-full bg-white flex items-center flex-col"
         style={{ height: 830 }}
@@ -457,6 +528,9 @@ const Main = () => {
           </div>
         </div>
       </div>
+
+      {/* --------------------------------------------------------------- */}
+
       <div
         className="w-full flex justify-center py-6"
         style={{
@@ -504,9 +578,12 @@ const Main = () => {
           />
         </div>
       </div>
+
+      {/* --------------------------------------------------------------- */}
+
       <div
         className="w-full bg-white flex flex-col items-center justify-center"
-        style={{ height: 420 }}
+        style={{ height: 400 }}
       >
         <p className="text-3xl w-full text-text text-center font-bold">
           Первое занятие БЕСПЛАТНО!
@@ -522,23 +599,35 @@ const Main = () => {
           addClass="mt-8"
         />
       </div>
+
+      {/* --------------------------------------------------------------- */}
+
       <div
         className="w-full bg-primary flex items-center justify-center"
-        style={{ height: 420 }}
+        style={{ height: 400 }}
       >
-        <p className="text-3xl w-full text-text text-center font-bold">
-          Первое занятие БЕСПЛАТНО!
-        </p>
-        <p className="text-2xl pt-5 text-text text-center max-w-xl">
-          Мы даем Вам возможность попробовать первое занятие, после которого вы
-          сможете принять решение о дальнейшем посещении
-        </p>
-        <Button
-          text="ЗАПИСАТЬСЯ НА БЕСПЛАТНЫЙ УРОК"
-          big
-          bigText
-          addclassName="mt-8"
-        />
+        <div class="items-center ml-16 w-50 p-4 rounded-3xl bg-white">
+          <img
+            className="object-fill mx-1"
+            style={{ height: 250 }}
+            src={merlin}
+            alt="merlin"
+          />
+        </div>
+        <div className="flex-1 p-20 text-center">
+          <p className="w-full text-3xl text-white text-center">
+            Мы являемся <strong>единственной</strong> школой в России обладающей{" "}
+            <strong>кубком Мерлина</strong> - высшей Международной наградой в
+            мире искусства фокусов и иллюзий
+          </p>
+          <Button
+            text="Подробнее про награду"
+            bigText
+            addClass="mt-8"
+            inverse
+            href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D1%80%D0%BB%D0%B8%D0%BD_(%D0%BF%D1%80%D0%B5%D0%BC%D0%B8%D1%8F)"
+          />
+        </div>
       </div>
     </div>
   );
