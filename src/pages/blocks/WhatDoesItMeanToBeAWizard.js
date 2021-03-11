@@ -54,7 +54,7 @@ const WhatDoesItMeanToBeAWizard = ({ deviceSize }) => {
         Что значит быть волшебником
       </p>
       {deviceSize <= 2 ? (
-        <p className="text-2xl w-120 pt-6 text-text text-center">
+        <p className="text-2xl w-120 py-6 text-text text-center">
           Раскроем таланты вашего ребенка и зажжем новую звезду
         </p>
       ) : null}
@@ -79,17 +79,18 @@ const WhatDoesItMeanToBeAWizard = ({ deviceSize }) => {
             height={deviceSize === 3 ? "h-96" : "h-80"}
           />
         </div>
-        <div
-          className={
-            (deviceSize === 3 ? "w-88" : "w-64") + " items-center z-10"
-          }
-        >
-          {deviceSize === 3 ? (
-            <p className="text-2xl w-full pt-6 text-text text-center">
-              Раскроем таланты вашего ребенка и зажжем новую звезду
-            </p>
-          ) : null}
-          {deviceSize >= 2 ? (
+        {deviceSize >= 2 ? (
+          <div
+            className={
+              (deviceSize === 3 ? "w-88" : "w-64") + " items-center z-10"
+            }
+          >
+            {deviceSize === 3 ? (
+              <p className="text-2xl w-full pt-6 text-text text-center">
+                Раскроем таланты вашего ребенка и зажжем новую звезду
+              </p>
+            ) : null}
+
             <div className="relative mt-10">
               <img
                 className="object-fill pt-5"
@@ -116,8 +117,8 @@ const WhatDoesItMeanToBeAWizard = ({ deviceSize }) => {
                 alt="eyes"
               />
             </div>
-          ) : null}
-        </div>
+          </div>
+        ) : null}
         {deviceSize === 3 ? (
           <div className="w-64">
             <InfoBlock
@@ -142,7 +143,12 @@ const WhatDoesItMeanToBeAWizard = ({ deviceSize }) => {
         ) : null}
       </div>
       {deviceSize <= 2 ? (
-        <div className="w-full flex flex-row justify-around">
+        <div
+          className={
+            (deviceSize === 2 ? "flex-row" : "flex-col items-center") +
+            " w-full flex justify-around mb-6"
+          }
+        >
           <InfoBlock
             src={pic2}
             alt="pic2"
@@ -150,7 +156,7 @@ const WhatDoesItMeanToBeAWizard = ({ deviceSize }) => {
             text="Легко держаться на сцене и уверенно выступать перед публикой"
             titleSize={fontSize.large}
             textSize={fontSize.normal}
-            height={deviceSize === 3 ? "h-96" : "h-80"}
+            height={deviceSize === 2 ? "h-80" : "h-72"}
           />
           <InfoBlock
             src={pic4}
@@ -159,7 +165,7 @@ const WhatDoesItMeanToBeAWizard = ({ deviceSize }) => {
             text="Стать юным мастером иллюзионного искусства"
             titleSize={fontSize.large}
             textSize={fontSize.normal}
-            height={deviceSize === 3 ? "h-96" : "h-80"}
+            height={deviceSize === 2 ? "h-80" : "h-72"}
           />
         </div>
       ) : null}
