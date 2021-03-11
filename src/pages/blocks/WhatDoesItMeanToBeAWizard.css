@@ -1,0 +1,29 @@
+@keyframes eyes {
+  /* назовём анимацию: "go-left-right" */
+  from {
+    left: 127px;
+    /* от: left: 0px */
+  }
+  80% {
+    left: 121px;
+  }
+  to {
+    left: 127px;
+    /* до: left: 100%-50px */
+  }
+}
+
+@keyframes eyes-small {
+  /* назовём анимацию: "go-left-right" */
+  from {
+    left: 97px;
+    /* от: left: 0px */
+  }
+  80% {
+    left: 93px;
+  }
+  to {
+    left: 97px;
+    /* до: left: 100%-50px */
+  }
+}
