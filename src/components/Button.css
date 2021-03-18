@@ -1,0 +1,15 @@
+.button {
+  transform: translateX(-85px);
+}
+
+@keyframes button-effect {
+  /* назовём анимацию: "go-left-right" */
+  30% {
+    transform: translateX(110%);
+    /* от: left: 0px */
+  }
+  100% {
+    transform: translateX(110%);
+    /* до: left: 100%-50px */
+  }
+}
