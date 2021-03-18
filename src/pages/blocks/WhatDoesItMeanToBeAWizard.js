@@ -50,11 +50,15 @@ const WhatDoesItMeanToBeAWizard = ({ deviceSize }) => {
       className="w-full bg-white flex items-center flex-col"
       // style={{ height: 830 }}
     >
-      <p className="text-3xl w-96 pt-6 text-primary text-center font-bold">
+      <p
+        className={
+          fontSize.title + " w-full p-6 text-primary text-center font-bold"
+        }
+      >
         Что значит быть волшебником
       </p>
       {deviceSize <= 2 ? (
-        <p className="text-2xl w-120 py-6 text-text text-center">
+        <p className={fontSize.big + " w-full py-6 px-4 text-text text-center"}>
           Раскроем таланты вашего ребенка и зажжем новую звезду
         </p>
       ) : null}
@@ -86,7 +90,7 @@ const WhatDoesItMeanToBeAWizard = ({ deviceSize }) => {
             }
           >
             {deviceSize === 3 ? (
-              <p className="text-2xl w-full pt-6 text-text text-center">
+              <p className="text-2xl w-full pt-6 px-4 text-text text-center">
                 Раскроем таланты вашего ребенка и зажжем новую звезду
               </p>
             ) : null}
@@ -107,7 +111,7 @@ const WhatDoesItMeanToBeAWizard = ({ deviceSize }) => {
                 style={{
                   width: deviceSize === 3 ? 87 : 67,
                   position: "absolute",
-                  top: deviceSize === 3 ? 159 : 126,
+                  top: deviceSize === 3 ? 159 : 125,
                   left: deviceSize === 3 ? 127 : 97,
                   animation:
                     (deviceSize === 3 ? "eyes" : "eyes-small") + " 2.2s",
