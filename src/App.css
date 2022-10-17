@@ -50,8 +50,12 @@
 }
 
 body {
-  background: skyblue;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden
+}
+
+html, body {
+  max-width: 100%
 }

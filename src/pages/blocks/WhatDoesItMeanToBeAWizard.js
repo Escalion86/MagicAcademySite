@@ -1,28 +1,28 @@
 // import logo from './logo.svg';
-import React from "react";
+import React from 'react'
 
-import adaptiveFontSize from "../../helpers/adaptiveFontSize";
+import adaptiveFontSize from '../../helpers/adaptiveFontSize'
 
-import "./WhatDoesItMeanToBeAWizard.css";
-import aik2_noeye from "../../img/pers2-noeye.png";
-import eyes from "../../img/eyes.png";
-import pic1 from "../../img/pic1.jpg";
-import pic2 from "../../img/pic2.jpg";
-import pic3 from "../../img/pic3.jpg";
-import pic4 from "../../img/pic4.jpg";
+import './WhatDoesItMeanToBeAWizard.css'
+import aik2_noeye from '../../img/pers2-noeye.png'
+import eyes from '../../img/eyes.png'
+import pic1 from '../../img/pic1.jpg'
+import pic2 from '../../img/pic2.jpg'
+import pic3 from '../../img/pic3.jpg'
+import pic4 from '../../img/pic4.jpg'
 
 const InfoBlock = ({
   src = null,
-  alt = "",
-  title = "",
-  text = "",
-  titleSize = "text-2xl",
-  textSize = "text-xl",
-  height = "h-96",
+  alt = '',
+  title = '',
+  text = '',
+  titleSize = 'text-2xl',
+  textSize = 'text-xl',
+  height = 'h-96',
 }) => {
   return (
     <div
-      className={"w-64 my-1 flex flex-col items-center " + height}
+      className={'w-64 my-1 flex flex-col items-center ' + height}
       // style={{ minWidth: 250 }}
     >
       <img
@@ -33,18 +33,18 @@ const InfoBlock = ({
       />
       <p
         className={
-          titleSize + " w-full pt-5 text-primary text-center font-bold"
+          titleSize + ' w-full pt-5 text-primary text-center font-bold'
         }
       >
         {title}
       </p>
-      <p className={textSize + " w-full pt-2 text-text text-center"}>{text}</p>
+      <p className={textSize + ' w-full pt-2 text-text text-center'}>{text}</p>
     </div>
-  );
-};
+  )
+}
 
 const WhatDoesItMeanToBeAWizard = ({ deviceSize }) => {
-  const fontSize = adaptiveFontSize(deviceSize);
+  const fontSize = adaptiveFontSize(deviceSize)
   return (
     <div
       className="w-full bg-white flex items-center flex-col"
@@ -52,13 +52,13 @@ const WhatDoesItMeanToBeAWizard = ({ deviceSize }) => {
     >
       <p
         className={
-          fontSize.title + " w-full p-6 text-primary text-center font-bold"
+          fontSize.title + ' w-full p-6 text-primary text-center font-bold'
         }
       >
         Что значит быть волшебником
       </p>
       {deviceSize <= 2 ? (
-        <p className={fontSize.big + " w-full py-6 px-4 text-text text-center"}>
+        <p className={fontSize.big + ' w-full py-6 px-4 text-text text-center'}>
           Раскроем таланты вашего ребенка и зажжем новую звезду
         </p>
       ) : null}
@@ -71,7 +71,7 @@ const WhatDoesItMeanToBeAWizard = ({ deviceSize }) => {
             text="Наши ученики уже с 6 лет выступают в прямых эфирах"
             titleSize={fontSize.large}
             textSize={fontSize.normal}
-            height={deviceSize === 3 ? "h-96" : "h-80"}
+            height={deviceSize === 3 ? 'h-92' : 'h-80'}
           />
           <InfoBlock
             src={pic3}
@@ -80,27 +80,27 @@ const WhatDoesItMeanToBeAWizard = ({ deviceSize }) => {
             text="Участвовать и побеждать в творческих турнирах"
             titleSize={fontSize.large}
             textSize={fontSize.normal}
-            height={deviceSize === 3 ? "h-96" : "h-80"}
+            height={deviceSize === 3 ? 'h-92' : 'h-80'}
           />
         </div>
         {deviceSize >= 2 ? (
           <div
             className={
-              (deviceSize === 3 ? "w-88" : "w-64") + " items-center z-10"
+              (deviceSize === 3 ? 'w-100' : 'w-64') + ' items-center z-10'
             }
           >
             {deviceSize === 3 ? (
-              <p className="text-2xl w-full pt-6 px-4 text-text text-center">
+              <p className="text-2xl w-full pt-6 text-text text-center">
                 Раскроем таланты вашего ребенка и зажжем новую звезду
               </p>
             ) : null}
 
-            <div className="relative mt-10">
+            <div className="relative mt-10 bord w-88 mx-auto">
               <img
                 className="object-fill pt-5"
                 style={{
                   width: deviceSize === 3 ? 336 : 256,
-                  position: "absolute",
+                  position: 'absolute',
                   top: 0,
                 }}
                 src={aik2_noeye}
@@ -110,12 +110,12 @@ const WhatDoesItMeanToBeAWizard = ({ deviceSize }) => {
                 className="object-fill ease-in-out"
                 style={{
                   width: deviceSize === 3 ? 87 : 67,
-                  position: "absolute",
+                  position: 'absolute',
                   top: deviceSize === 3 ? 159 : 125,
                   left: deviceSize === 3 ? 127 : 97,
                   animation:
-                    (deviceSize === 3 ? "eyes" : "eyes-small") + " 2.2s",
-                  animationIterationCount: "infinite",
+                    (deviceSize === 3 ? 'eyes' : 'eyes-small') + ' 2.2s',
+                  animationIterationCount: 'infinite',
                 }}
                 src={eyes}
                 alt="eyes"
@@ -132,7 +132,7 @@ const WhatDoesItMeanToBeAWizard = ({ deviceSize }) => {
               text="Легко держаться на сцене и уверенно выступать перед публикой"
               titleSize={fontSize.large}
               textSize={fontSize.normal}
-              height={deviceSize === 3 ? "h-96" : "h-80"}
+              height={deviceSize === 3 ? 'h-92' : 'h-80'}
             />
             <InfoBlock
               src={pic4}
@@ -141,7 +141,7 @@ const WhatDoesItMeanToBeAWizard = ({ deviceSize }) => {
               text="Стать юным мастером иллюзионного искусства"
               titleSize={fontSize.large}
               textSize={fontSize.normal}
-              height={deviceSize === 3 ? "h-96" : "h-80"}
+              height={deviceSize === 3 ? 'h-92' : 'h-80'}
             />
           </div>
         ) : null}
@@ -149,8 +149,8 @@ const WhatDoesItMeanToBeAWizard = ({ deviceSize }) => {
       {deviceSize <= 2 ? (
         <div
           className={
-            (deviceSize === 2 ? "flex-row" : "flex-col items-center") +
-            " w-full flex justify-around mb-6"
+            (deviceSize === 2 ? 'flex-row' : 'flex-col items-center') +
+            ' w-full flex justify-around mb-6'
           }
         >
           <InfoBlock
@@ -160,7 +160,7 @@ const WhatDoesItMeanToBeAWizard = ({ deviceSize }) => {
             text="Легко держаться на сцене и уверенно выступать перед публикой"
             titleSize={fontSize.large}
             textSize={fontSize.normal}
-            height={deviceSize === 2 ? "h-80" : "h-72"}
+            height={deviceSize === 2 ? 'h-80' : 'h-72'}
           />
           <InfoBlock
             src={pic4}
@@ -169,12 +169,12 @@ const WhatDoesItMeanToBeAWizard = ({ deviceSize }) => {
             text="Стать юным мастером иллюзионного искусства"
             titleSize={fontSize.large}
             textSize={fontSize.normal}
-            height={deviceSize === 2 ? "h-80" : "h-72"}
+            height={deviceSize === 2 ? 'h-80' : 'h-72'}
           />
         </div>
       ) : null}
     </div>
-  );
-};
+  )
+}
 
-export default WhatDoesItMeanToBeAWizard;
+export default WhatDoesItMeanToBeAWizard

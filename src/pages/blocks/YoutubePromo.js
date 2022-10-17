@@ -7,10 +7,13 @@ const YoutubePromo = ({ screenWidth = 1024 }) => {
         : screenWidth >= 768
         ? 360
         : (screenWidth * 0.9 * 9) / 16,
-  };
+  }
 
   return (
-    <div className="w-full bg-primary flex p-4 items-center justify-center">
+    <div
+      id="promo"
+      className="w-full bg-primary flex p-4 items-center justify-center"
+    >
       <iframe
         width={youtubeDemensions.x}
         height={youtubeDemensions.y}
@@ -21,7 +24,7 @@ const YoutubePromo = ({ screenWidth = 1024 }) => {
         allowFullScreen
       />
     </div>
-  );
-};
+  )
+}
 
-export default YoutubePromo;
+export default YoutubePromo

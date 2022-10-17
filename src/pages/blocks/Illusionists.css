@@ -1,0 +1,14 @@
+@keyframes eyes-smallest {
+  /* назовём анимацию: "go-left-right" */
+  from {
+    left: 50px;
+    /* от: left: 0px */
+  }
+  80% {
+    left: 47px;
+  }
+  to {
+    left: 50px;
+    /* до: left: 100%-50px */
+  }
+}

@@ -1,27 +1,27 @@
-import React from "react";
-import { Link } from "react-scroll";
+import React from 'react'
+import { Link } from 'react-scroll'
 
-import "./SplashScreen.css";
+import './SplashScreen.css'
 
-import adaptiveFontSize from "../../helpers/adaptiveFontSize";
+import adaptiveFontSize from '../../helpers/adaptiveFontSize'
 
-import Button from "../../components/Button";
+import Button from '../../components/Button'
 
 const SplashScreen = ({
-  title = "",
-  text = "",
+  title = '',
+  text = '',
   deviceSize = 3,
-  buttonText = "",
+  buttonText = '',
   onPressButton = null,
   hrefButton = null,
 }) => {
-  const fontSize = adaptiveFontSize(deviceSize);
+  const fontSize = adaptiveFontSize(deviceSize)
   return (
     <div className="flex flex-col items-center justify-center splash">
       <div className="flex flex-col splash-content overflow-hidden items-center justify-center">
         <div className="bg-white w-6/12 py-6 px-4 items-center justify-center">
-          <div className={"text-text " + fontSize.big}>{title}</div>
-          <div className={"m-2 text-text " + fontSize.normal}>{text}</div>
+          <div className={'text-text ' + fontSize.big}>{title}</div>
+          <div className={'m-2 text-text ' + fontSize.normal}>{text}</div>
           {onPressButton ? (
             <Button
               text={buttonText}
@@ -36,7 +36,7 @@ const SplashScreen = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SplashScreen;
+export default SplashScreen

@@ -1,8 +1,8 @@
 // import logo from './logo.svg';
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import MainPage from "./pages/MainPage";
-import "./App.css";
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import MainPage from './pages/MainPage'
+import './App.css'
 
 // const App = () => {
 //   return (
@@ -51,7 +51,7 @@ const App = () => {
       </div>
     </div>
     // </template>
-  );
-};
+  )
+}
 
-export default App;
+export default App

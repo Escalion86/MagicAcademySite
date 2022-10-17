@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react'
 
-import Button from "../../components/Button";
-import merlin from "../../img/merlin.png";
+import Button from '../../components/Button'
+import merlin from '../../img/merlin.png'
 
-import adaptiveFontSize from "../../helpers/adaptiveFontSize";
+import adaptiveFontSize from '../../helpers/adaptiveFontSize'
 
 const AboutMerlin = ({ deviceSize }) => {
-  const fontSize = adaptiveFontSize(deviceSize);
+  const fontSize = adaptiveFontSize(deviceSize)
   return (
     <div
-      className="w-full bg-primary flex px-5 sm:px-10 lg:px-20 items-center justify-center"
+      className="flex items-center justify-center w-full px-5 bg-primary sm:px-10 lg:px-20"
       style={{ height: 400 }}
     >
       <div class="items-center w-50 py-3 px-2 rounded-3xl bg-white">
@@ -22,9 +22,9 @@ const AboutMerlin = ({ deviceSize }) => {
           alt="merlin"
         />
       </div>
-      <div className="flex-1 text-center ml-4">
-        <p className={fontSize.big + " w-full text-white text-center"}>
-          Мы являемся <strong>единственной</strong> школой в России обладающей{" "}
+      <div className="flex-1 ml-4 text-center">
+        <p className={fontSize.big + ' w-full text-white text-center'}>
+          Мы являемся <strong>единственной</strong> школой в России обладающей{' '}
           <strong>кубком Мерлина</strong> - высшей Международной наградой в мире
           искусства фокусов и иллюзий
         </p>
@@ -37,7 +37,7 @@ const AboutMerlin = ({ deviceSize }) => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AboutMerlin;
+export default AboutMerlin
